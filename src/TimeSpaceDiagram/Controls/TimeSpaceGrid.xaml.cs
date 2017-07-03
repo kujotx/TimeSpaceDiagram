@@ -17,19 +17,15 @@
     {
         private const int Cycles = 3;
 
-        private readonly SignalPlan _signalPlan;
+        private SignalPlan _signalPlan;
 
-        private readonly ISignalPlanService _signalPlanService;
+        private ISignalPlanService _signalPlanService;
 
-        private readonly IOffsetService _offsetService;
+        private IOffsetService _offsetService;
 
         public TimeSpaceGrid()
         {
             InitializeComponent();
-            _signalPlanService = Kernel.Get<ISignalPlanService>();
-            _signalPlan = _signalPlanService.CreateSignalPlan(Cycles, ArterialName);
-            _offsetService = Kernel.Get<IOffsetService>();
-            _gradientColorManager = Kernel.Get<IGradientColorManager>();
             CreateSignalPlan();
         }
 
@@ -38,9 +34,7 @@
         public static readonly DependencyProperty ArterialNameProperty =
              DependencyProperty.Register("ArterialName", typeof(string),
              typeof(TimeSpaceGrid), new FrameworkPropertyMetadata(string.Empty));
-
-        private IGradientColorManager _gradientColorManager;
-
+        
         public string ArterialName 
         {
             get { return (string)GetValue(ArterialNameProperty); }
@@ -49,6 +43,8 @@
 
         private void CreateSignalPlan()
         {
+            _signalPlanService = Kernel.Get<ISignalPlanService>();
+            _signalPlan = _signalPlanService.CreateSignalPlan(Cycles, ArterialName);
             IEnumerable<Segment> segments = _signalPlan.Arterials;
             SetGridColumnDefinitions(segments, CycleGrid);
             AddSegmentCellsToGrid(segments, CycleGrid);
@@ -56,10 +52,11 @@
 
         private void AddSegmentCellsToGrid(IEnumerable<Segment> segments, Grid grid)
         {
+            IGradientColorManager gradientColorManager = Kernel.Get<IGradientColorManager>();
             int i = 0;
             foreach (var straightaway in segments)
             {
-                var cycle = new Cycle(straightaway, _offsetService, _gradientColorManager);
+                var cycle = new Cycle(straightaway, _offsetService, gradientColorManager);
                 Grid.SetColumn(cycle, i++);
                 grid.Children.Add(cycle);
             }
@@ -69,7 +66,8 @@
         {
             foreach (var straightaway in segments)
             {
-                var column = new ColumnDefinition { Width = new GridLength(GetColumnWidth(straightaway, segments), GridUnitType.Star) };
+                var column = new ColumnDefinition {
+                    Width = new GridLength(GetColumnWidth(straightaway, segments), GridUnitType.Star) };
                 grid.ColumnDefinitions.Add(column);
             }
         }
