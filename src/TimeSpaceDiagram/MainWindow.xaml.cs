@@ -9,7 +9,6 @@
 
 namespace TimeSpaceDiagram
 {
-    using Ninject;
     using System.Windows;
     using TimeSpaceDiagram.Interfaces;
 
@@ -18,17 +17,18 @@ namespace TimeSpaceDiagram
     /// </summary>
     public partial class MainWindow : Window
     {
+        readonly ITimeSpaceGrid _grid;
 
         #region Constructors and Destructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
-        public MainWindow(IKernel kernel)
+        public MainWindow(ITimeSpaceGrid grid)
         {
             this.InitializeComponent();
-            ITimeSpaceGrid grid = kernel.Get<ITimeSpaceGrid>();
-            this.AddChild(grid);
+            _grid = grid;
+            this.AddChild(_grid);
         }
 
         #endregion

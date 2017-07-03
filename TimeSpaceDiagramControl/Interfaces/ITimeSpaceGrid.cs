@@ -1,4 +1,4 @@
-﻿namespace TimeSpaceDiagram.Interfaces
+﻿namespace TimeSpaceDiagramControl.Interfaces
 {
     public interface ITimeSpaceGrid
     {

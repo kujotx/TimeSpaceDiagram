@@ -23,8 +23,8 @@
         {
             // TODO Provide a more robust repository method for getting intersections
             IList<TrafficSignal> intersections = _intersectionService.GetTrafficSignals(thoroughfareName); 
-            IEnumerable<Segment> straightaways = CreateStraightaways(intersections, cycles);
-            SignalPlan signalPlan = new SignalPlan(straightaways, cycles);
+            IEnumerable<Segment> segments = CreateSegments(intersections, cycles);
+            SignalPlan signalPlan = new SignalPlan(segments, cycles);
             return signalPlan;
         }
 
@@ -34,7 +34,7 @@
         /// <param name="trafficSignals">A collection of traffic signals</param>
         /// <param name="cycles">The number of cycles to display</param>
         /// <returns>A collection of straightaways for the intersections provided</returns>
-        private static IEnumerable<Segment> CreateStraightaways(IList<TrafficSignal> trafficSignals, int cycles)
+        private static IEnumerable<Segment> CreateSegments(IList<TrafficSignal> trafficSignals, int cycles)
         {
             var straightaways = new List<Segment>();
 

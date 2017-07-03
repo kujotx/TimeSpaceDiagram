@@ -14,7 +14,7 @@ namespace TimeSpaceDiagram
     using Ninject;
 
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Composition Root for TimeSpaceDiagram
     /// </summary>  
     public partial class App : Application
     {
