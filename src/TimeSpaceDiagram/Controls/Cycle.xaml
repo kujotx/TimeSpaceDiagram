@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="TimeSpaceDiagram.Controls.Cycle" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="clr-namespace:TimeSpaceDiagram.Converters"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008">
+    <Grid x:Name="CycleGrid" MinWidth="100" MinHeight="100" Margin="0 0 0 0">
+        <Grid.Resources>
+            <local:FlowConverter x:Key="widthConverter" />
+            <local:SpeedLimitAngleConverter x:Key="angleConverter" />
+            <local:CycleConverter x:Key="cycleConverter" />
+            <local:CycleBackgroundConverter x:Key="cycleBackgroundConverter" />
+        </Grid.Resources>
+        <Grid.Background>
+            <LinearGradientBrush x:Name="GridBackground" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat" Opacity="0.30">
+                <LinearGradientBrush.RelativeTransform>
+                    <ScaleTransform ScaleX="{Binding Converter={StaticResource cycleBackgroundConverter}}" ScaleY="{Binding Converter={StaticResource cycleBackgroundConverter}}">
+                    </ScaleTransform>
+                </LinearGradientBrush.RelativeTransform>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel x:Name="stack" Orientation="Horizontal">
+            <Rectangle x:Name="InboundPhaseBar" Width="10">
+                <Rectangle.Fill>
+                    <LinearGradientBrush x:Name="LeftBarFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
+                        <LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform ScaleX="{Binding Converter={StaticResource cycleConverter}}" ScaleY="{Binding Converter={StaticResource cycleConverter}}">
+                            </ScaleTransform>
+                        </LinearGradientBrush.RelativeTransform>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid x:Name="TrafficFlow" Width="{Binding ElementName=stack, Path=ActualWidth, Converter={StaticResource widthConverter}}">
+                <Rectangle x:Name="InboundFlow">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush x:Name="LeftFlowFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
+                            <LinearGradientBrush.Transform>
+                                <TransformGroup>
+                                    <SkewTransform>
+                                        <SkewTransform.AngleY>
+                                            <MultiBinding Converter="{StaticResource angleConverter}">
+                                                <Binding ElementName="TrafficFlow" Path="ActualHeight" />
+                                                <Binding ElementName="TrafficFlow" Path="ActualWidth" />
+                                            </MultiBinding>
+                                        </SkewTransform.AngleY>
+                                    </SkewTransform>
+                                    <ScaleTransform ScaleX="{Binding Converter={StaticResource cycleConverter}}" ScaleY="{Binding Converter={StaticResource cycleConverter}}">
+                                    </ScaleTransform>
+                                </TransformGroup>
+                            </LinearGradientBrush.Transform>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle x:Name="OutboundFlow">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush x:Name="RightFlowFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
+                         <LinearGradientBrush.Transform>
+                                <TransformGroup>
+                                    <SkewTransform>
+                                        <SkewTransform.AngleY>
+                                            <MultiBinding Converter="{StaticResource angleConverter}">
+                                                <Binding ElementName="TrafficFlow" Path="ActualHeight" />
+                                                <Binding ElementName="TrafficFlow" Path="ActualWidth" />
+                                            </MultiBinding>
+                                        </SkewTransform.AngleY>
+                                    </SkewTransform>
+                                    <ScaleTransform ScaleX="{Binding Converter={StaticResource cycleConverter}}" ScaleY="{Binding Converter={StaticResource cycleConverter}}">
+                                    </ScaleTransform>
+                                </TransformGroup>
+                            </LinearGradientBrush.Transform>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                    <Rectangle.LayoutTransform>
+                        <!-- ScaleX transform with a flip to show the traffic flow from the right side -->
+                        <ScaleTransform ScaleX="-1"></ScaleTransform>
+                    </Rectangle.LayoutTransform>
+                </Rectangle>
+            </Grid>
+            <Rectangle x:Name="OutboundPhaseBar" Width="10">
+                <Rectangle.Fill>
+                    <LinearGradientBrush x:Name="RightBarFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
+                        <LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform ScaleX="{Binding Converter={StaticResource cycleConverter}}" ScaleY="{Binding Converter={StaticResource cycleConverter}}">
+                            </ScaleTransform>
+                        </LinearGradientBrush.RelativeTransform>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </StackPanel>
+    </Grid>
+</UserControl>
