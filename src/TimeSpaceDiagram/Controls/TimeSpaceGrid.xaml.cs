@@ -11,7 +11,7 @@
     /// <summary>
     /// Interaction logic for TimeSpaceGrid.xaml
     /// </summary>
-    public partial class TimeSpaceGrid : UserControl, ITimeSpaceGrid
+    public partial class TimeSpaceGrid : TsUserControl, ITimeSpaceGrid
     {
         private const int Cycles = 3;
 

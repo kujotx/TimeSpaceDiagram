@@ -27,7 +27,8 @@ namespace TimeSpaceDiagram
         public MainWindow(IKernel kernel)
         {
             this.InitializeComponent();
-            this.AddChild(kernel.Get<ITimeSpaceGrid>());
+            ITimeSpaceGrid grid = kernel.Get<ITimeSpaceGrid>();
+            this.AddChild(grid);
         }
 
         #endregion
