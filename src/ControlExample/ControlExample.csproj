@@ -62,7 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IoC\TrafficRegistry.cs" />
-    <Compile Include="Services\Intersections\FakeIntersectionService.cs" />
+    <Compile Include="Services\FakeIntersectionService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

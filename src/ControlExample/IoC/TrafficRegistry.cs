@@ -2,7 +2,7 @@
 {
     using Ninject.Modules;
 
-    using ControlExample.Services.Intersections;
+    using ControlExample.Services;
 
     using TimeSpaceDiagramControl.Controls;
     using TimeSpaceDiagramControl.Interfaces;
@@ -13,10 +13,21 @@
     /// </summary>
     public class TrafficRegistry : NinjectModule
     {
+        /// <summary>
+        /// Configure all bindings
+        /// </summary>
         public override void Load()
         {
             Bind<ITrafficSignalService>().To<FakeIntersectionService>()
                 .InTransientScope();
+            RegisterTimeSpaceDiagramControl();
+        }
+
+        /// <summary>
+        /// Set up bindings for services in the TimeSpaceDiagramControl
+        /// </summary>
+        private void RegisterTimeSpaceDiagramControl()
+        {
             Bind<ISignalPlanService>().To<SignalPlanService>()
                 .InTransientScope();
             Bind<IGradientColorManager>().To<HardCodedColorManager>()
