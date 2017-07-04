@@ -1,5 +1,5 @@
 ﻿using System.Windows.Media;
-using TimeSpaceDiagram.Controls;
+using TimeSpaceDiagramControl.Controls;
 
 namespace TimeSpaceDiagram.Services
 {

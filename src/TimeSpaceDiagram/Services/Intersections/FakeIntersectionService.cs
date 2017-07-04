@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using TimeSpaceDiagram.Interfaces;
-using TimeSpaceDiagram.Domain;
+using TimeSpaceDiagramControl.Interfaces;
+using TimeSpaceDiagramControl.Domain;
 
 namespace TimeSpaceDiagram.Services.Intersections
 {

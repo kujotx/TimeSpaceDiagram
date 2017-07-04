@@ -61,18 +61,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\ColorOffset.cs" />
-    <Compile Include="Interfaces\ITimeSpaceGrid.cs" />
-    <Compile Include="Controls\TimeSpaceGrid.xaml.cs">
-      <DependentUpon>TimeSpaceGrid.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TsUserControl.cs" />
-    <Compile Include="Domain\Segment.cs" />
-    <Compile Include="Domain\TrafficSignal.cs" />
-    <Compile Include="Interfaces\IGradientColorManager.cs" />
-    <Compile Include="Interfaces\IOffsetService.cs" />
-    <Compile Include="Interfaces\ISignalPlanService.cs" />
-    <Compile Include="Interfaces\ITrafficSignalService.cs" />
     <Compile Include="IoC\TrafficRegistry.cs" />
     <Compile Include="Services\CalculatedOffsetService.cs" />
     <Compile Include="Services\ColorOffsetComparer.cs" />
@@ -81,14 +69,6 @@
     <Compile Include="Services\Intersections\FakeIntersectionService.cs" />
     <Compile Include="Services\ScaledColorOffsetFactory.cs" />
     <Compile Include="Services\SignalPlanService.cs" />
-    <Page Include="Controls\Cycle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TimeSpaceGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,13 +77,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\Cycle.xaml.cs">
-      <DependentUpon>Cycle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Converters\CycleConverter.cs" />
-    <Compile Include="Converters\FlowConverter.cs" />
-    <Compile Include="Converters\SpeedLimitAngleConverter.cs" />
-    <Compile Include="Domain\SignalPlan.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -135,7 +108,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\TimeSpaceDiagramControl\TimeSpaceDiagramControl.csproj">
+      <Project>{ec11be29-333c-4923-b3ef-04f01d2d00a7}</Project>
+      <Name>TimeSpaceDiagramControl</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

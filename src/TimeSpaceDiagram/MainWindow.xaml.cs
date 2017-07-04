@@ -10,7 +10,7 @@
 namespace TimeSpaceDiagram
 {
     using System.Windows;
-    using TimeSpaceDiagram.Interfaces;
+    using TimeSpaceDiagramControl.Interfaces;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml

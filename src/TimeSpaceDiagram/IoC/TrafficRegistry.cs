@@ -4,8 +4,8 @@ namespace TimeSpaceDiagram.IoC
 {
     using Ninject.Modules;
 
-    using Controls;
-    using Interfaces;
+    using TimeSpaceDiagramControl.Controls;
+    using TimeSpaceDiagramControl.Interfaces;
     using Services;
 
     /// <summary>

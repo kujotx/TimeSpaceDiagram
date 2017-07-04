@@ -1,7 +1,7 @@
 ﻿namespace TimeSpaceDiagram.Services
 {
-    using Domain;
-    using Interfaces;
+    using TimeSpaceDiagramControl.Domain;
+    using TimeSpaceDiagramControl.Interfaces;
     using System.Collections.Generic;
 
     public class SignalPlanService : ISignalPlanService

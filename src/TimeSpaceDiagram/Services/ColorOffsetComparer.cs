@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media;
-using TimeSpaceDiagram.Controls;
-using TimeSpaceDiagram.Domain;
-using TimeSpaceDiagram.Interfaces;
+using TimeSpaceDiagramControl.Controls;
+using TimeSpaceDiagramControl.Domain;
+using TimeSpaceDiagramControl.Interfaces;
 
 namespace TimeSpaceDiagram.Services
 {
