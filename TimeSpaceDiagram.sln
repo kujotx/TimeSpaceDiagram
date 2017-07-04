@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlExample", "src\TimeSpaceDiagram\ControlExample.csproj", "{763988B6-8CD3-48AD-938F-DC864D753A3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlExample", "src\ControlExample\ControlExample.csproj", "{763988B6-8CD3-48AD-938F-DC864D753A3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeSpaceDiagramControl", "TimeSpaceDiagramControl\TimeSpaceDiagramControl.csproj", "{EC11BE29-333C-4923-B3EF-04F01D2D00A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeSpaceDiagramControl", "src\TimeSpaceDiagramControl\TimeSpaceDiagramControl.csproj", "{EC11BE29-333C-4923-B3EF-04F01D2D00A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

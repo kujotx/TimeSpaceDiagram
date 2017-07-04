@@ -109,7 +109,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TimeSpaceDiagramControl\TimeSpaceDiagramControl.csproj">
+    <ProjectReference Include="..\TimeSpaceDiagramControl\TimeSpaceDiagramControl.csproj">
       <Project>{ec11be29-333c-4923-b3ef-04f01d2d00a7}</Project>
       <Name>TimeSpaceDiagramControl</Name>
     </ProjectReference>
