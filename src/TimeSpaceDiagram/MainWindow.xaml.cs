@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TimeSpaceDiagram
+namespace ControlExample
 {
     using System.Windows;
     using TimeSpaceDiagramControl.Interfaces;

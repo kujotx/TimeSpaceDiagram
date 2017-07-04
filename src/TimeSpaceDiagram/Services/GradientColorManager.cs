@@ -1,7 +1,7 @@
 using System.Windows.Media;
 using TimeSpaceDiagramControl.Interfaces;
 
-namespace TimeSpaceDiagram.Services
+namespace ControlExample.Services
 {
     /// <summary>
     /// Determines what colors are used for phasing by using hard-coded regular, ol stop light colors.

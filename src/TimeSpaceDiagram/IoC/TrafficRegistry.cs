@@ -1,12 +1,13 @@
-﻿using TimeSpaceDiagram.Services.Intersections;
-
-namespace TimeSpaceDiagram.IoC
+﻿namespace ControlExample.IoC
 {
     using Ninject.Modules;
 
+    using ControlExample.Services.Intersections;
+    using ControlExample.Services;
+
     using TimeSpaceDiagramControl.Controls;
     using TimeSpaceDiagramControl.Interfaces;
-    using Services;
+    
 
     /// <summary>
     /// Sets up our contracts and services

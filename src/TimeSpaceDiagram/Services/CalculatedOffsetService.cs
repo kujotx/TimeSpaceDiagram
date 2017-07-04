@@ -6,7 +6,7 @@ using TimeSpaceDiagramControl.Controls;
 using TimeSpaceDiagramControl.Domain;
 using TimeSpaceDiagramControl.Interfaces;
 
-namespace TimeSpaceDiagram.Services
+namespace ControlExample.Services
 {
     /// <summary>
     /// Creates color offsets for a linear gradient bar to represent traffic cycles in a time-space diagram

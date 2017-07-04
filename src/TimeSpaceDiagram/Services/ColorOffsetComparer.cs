@@ -5,7 +5,7 @@ using TimeSpaceDiagramControl.Controls;
 using TimeSpaceDiagramControl.Domain;
 using TimeSpaceDiagramControl.Interfaces;
 
-namespace TimeSpaceDiagram.Services
+namespace ControlExample.Services
 {
     /// <summary>
     /// Orders ColorOffsets by offset, then by color according to:

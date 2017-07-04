@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TimeSpaceDiagramControl.Interfaces;
 using TimeSpaceDiagramControl.Domain;
 
-namespace TimeSpaceDiagram.Services.Intersections
+namespace ControlExample.Services.Intersections
 {
     /// <summary>
     /// IntersectionService returns all cross-streets for a given arterialName

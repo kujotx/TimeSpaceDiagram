@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TimeSpaceDiagram
+namespace ControlExample
 {
     using System.Windows;
-    using TimeSpaceDiagram.IoC;
+    using ControlExample.IoC;
     using Ninject;
 
     /// <summary>
-    /// Composition Root for TimeSpaceDiagram
+    /// Composition Root for ControlExample
     /// </summary>  
     public partial class App : Application
     {

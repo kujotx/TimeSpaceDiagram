@@ -1,4 +1,4 @@
-﻿namespace TimeSpaceDiagram.Services
+﻿namespace ControlExample.Services
 {
     using TimeSpaceDiagramControl.Domain;
     using TimeSpaceDiagramControl.Interfaces;

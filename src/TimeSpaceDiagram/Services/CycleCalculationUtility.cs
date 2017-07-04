@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace TimeSpaceDiagram.Services
+﻿namespace ControlExample.Services
 {
+    using System;
+
     public static class CycleCalculationUtility
     {
         public static decimal PercentageOfCycle(decimal seconds, decimal cycle)

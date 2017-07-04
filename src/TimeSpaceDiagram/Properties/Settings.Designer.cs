@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TimeSpaceDiagram.Properties {
+namespace ControlExample.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
