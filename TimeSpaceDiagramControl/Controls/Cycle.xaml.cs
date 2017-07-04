@@ -40,6 +40,7 @@ namespace TimeSpaceDiagramControl.Controls
         /// </summary>
         public Cycle(Segment straightaway, IOffsetService offsetService, IGradientColorManager gradientColorManager)
         {
+            this.InitializeComponent();
             this._gradientColorManager = gradientColorManager;
             this._green = this._gradientColorManager.GetGreenColor();
             this._outboundFlowColor = this._gradientColorManager.GetOutboundFlowColor();
