@@ -37,7 +37,7 @@ namespace TimeSpaceDiagramControl.Services
 
         public IEnumerable<ColorOffset> GetColorOffsets(TrafficSignal intersection, TrafficDirection trafficDirection)
         {
-            _offset = trafficDirection == TrafficDirection.Inbound ? intersection.InboundOffset : intersection.OutboundOffset;
+            _offset = trafficDirection == TrafficDirection.Upstream ? intersection.InboundOffset : intersection.OutboundOffset;
             
             _adjustedGreenStop = GetAdjustedGreenStop(intersection);
             _adjustedYellowStop = GetAdjustedYellowStop(intersection);

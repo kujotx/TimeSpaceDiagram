@@ -62,8 +62,8 @@ namespace TimeSpaceDiagramControl.Controls
         /// </summary>
         private void CreateGradientStops()
         {
-            AddGradientStops(Segments.OutboundIntersection, OutboundPhaseBar, OutboundFlow, TrafficDirection.Outbound);
-            AddGradientStops(Segments.InboundIntersection, InboundPhaseBar, InboundFlow, TrafficDirection.Inbound);
+            AddGradientStops(Segments.UpstreamIntersection, OutboundPhaseBar, OutboundFlow, TrafficDirection.Downstream);
+            AddGradientStops(Segments.DownstreamIntersection, InboundPhaseBar, InboundFlow, TrafficDirection.Upstream);
         }
 
         /// <summary>
@@ -74,10 +74,10 @@ namespace TimeSpaceDiagramControl.Controls
         private void CreateConverters(Segment segment)
         {
             CycleConverter cycleConverter = CycleGrid.Resources["cycleConverter"] as CycleConverter;
-            cycleConverter.Cycles = segment.Cycles;
+            cycleConverter.Cycles = segment.CycleCount;
 
             CycleBackgroundConverter cycleBackgroundConverter = CycleGrid.Resources["cycleBackgroundConverter"] as CycleBackgroundConverter;
-            cycleBackgroundConverter.Cycles = segment.Cycles;
+            cycleBackgroundConverter.Cycles = segment.CycleCount;
             
             SpeedLimitAngleConverter angleConverter = CycleGrid.Resources["angleConverter"] as SpeedLimitAngleConverter;
             angleConverter.Distance = segment.Distance;
@@ -107,7 +107,7 @@ namespace TimeSpaceDiagramControl.Controls
             phaseGradientBrush.GradientStops.Clear();
             flowGradientBrush.GradientStops.Clear();
 
-            var fillColor = trafficDirection == TrafficDirection.Outbound ? _outboundFlowColor : _inboundFlowColor;
+            var fillColor = trafficDirection == TrafficDirection.Downstream ? _outboundFlowColor : _inboundFlowColor;
             
             // Add the colors for the phase and a matching background for flows to match the coordinated phase.
             foreach (var colorOffset in colorOffsets)

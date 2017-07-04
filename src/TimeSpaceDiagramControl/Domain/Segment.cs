@@ -13,19 +13,19 @@
         {
         }
 
-        public Segment(TrafficSignal inboundIntersection, TrafficSignal outboundIntersection, int cycles, int speedLimit, double cycleLength)
+        public Segment(TrafficSignal downstreamIntersection, TrafficSignal upstreamIntersection, int cycleCount, int speedLimit, double cycleLength)
         {
-            InboundIntersection = inboundIntersection;
-            OutboundIntersection = outboundIntersection;
-            Distance = inboundIntersection.OutboundDistance;
+            DownstreamIntersection = downstreamIntersection;
+            UpstreamIntersection = upstreamIntersection;
+            Distance = downstreamIntersection.OutboundDistance;
             SpeedLimit = speedLimit;
-            Cycles = cycles;
+            CycleCount = cycleCount;
             CycleLength = cycleLength;
         }
 
-        public TrafficSignal InboundIntersection { get; set; }
+        public TrafficSignal DownstreamIntersection { get; set; }
 
-        public TrafficSignal OutboundIntersection { get; set; }
+        public TrafficSignal UpstreamIntersection { get; set; }
 
         /// <summary>
         /// The distance between the two TrafficSignal objects
@@ -37,7 +37,10 @@
         /// </summary>
         public double SpeedLimit { get; set; }
 
-        public int Cycles { get; set; }
+        /// <summary>
+        /// The count of cycles to present on-screen
+        /// </summary>
+        public int CycleCount { get; set; }
 
         /// <summary>
         /// The time required for a complete sequence of signal indications. 

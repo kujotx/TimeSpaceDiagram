@@ -1,5 +1,5 @@
 ﻿public enum TrafficDirection
 {
-    Inbound = 1,
-    Outbound = 2
+    Upstream = 1,
+    Downstream = 2
 }
