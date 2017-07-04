@@ -25,11 +25,11 @@ namespace TimeSpaceDiagramControl.Controls
     {
 
         // Dependency Property
-        public static readonly DependencyProperty StraightawayProperty =
+        public static readonly DependencyProperty SegmentProperty =
              DependencyProperty.Register("Segment", typeof(Segment),
              typeof(Cycle), new FrameworkPropertyMetadata(new Segment()));
 
-        private readonly IOffsetService offsetService;
+        private readonly IOffsetService _offsetService;
         private readonly IGradientColorManager _gradientColorManager;
         private readonly Color _green;
         private readonly Color _outboundFlowColor;
@@ -38,23 +38,23 @@ namespace TimeSpaceDiagramControl.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="Cycle"/> class.
         /// </summary>
-        public Cycle(Segment straightaway, IOffsetService offsetService, IGradientColorManager gradientColorManager)
+        public Cycle(Segment segment, IOffsetService offsetService, IGradientColorManager gradientColorManager)
         {
-            this.InitializeComponent();
-            this._gradientColorManager = gradientColorManager;
-            this._green = this._gradientColorManager.GetGreenColor();
-            this._outboundFlowColor = this._gradientColorManager.GetOutboundFlowColor();
-            this._inboundFlowColor = this._gradientColorManager.GetInboundFlowColor();
-            this.Straightaway = straightaway;
-            this.offsetService = offsetService;
-            CreateConverters(straightaway);
+            InitializeComponent();
+            _gradientColorManager = gradientColorManager;
+            _green = _gradientColorManager.GetGreenColor();
+            _outboundFlowColor = _gradientColorManager.GetOutboundFlowColor();
+            _inboundFlowColor = _gradientColorManager.GetInboundFlowColor();
+            Segments = segment;
+            _offsetService = offsetService;
+            CreateConverters(segment);
             CreateGradientStops();
         }
 
-        private Segment Straightaway
+        private Segment Segments
         {
-            get { return (Segment)GetValue(StraightawayProperty); }
-            set { SetValue(StraightawayProperty, value); }
+            get { return (Segment)GetValue(SegmentProperty); }
+            set { SetValue(SegmentProperty, value); }
         }
 
         /// <summary>
@@ -62,31 +62,31 @@ namespace TimeSpaceDiagramControl.Controls
         /// </summary>
         private void CreateGradientStops()
         {
-            this.AddGradientStops(this.Straightaway.OutboundIntersection, this.OutboundPhaseBar, this.OutboundFlow, TrafficDirection.Outbound);
-            this.AddGradientStops(this.Straightaway.InboundIntersection, this.InboundPhaseBar, this.InboundFlow, TrafficDirection.Inbound);
+            AddGradientStops(Segments.OutboundIntersection, OutboundPhaseBar, OutboundFlow, TrafficDirection.Outbound);
+            AddGradientStops(Segments.InboundIntersection, InboundPhaseBar, InboundFlow, TrafficDirection.Inbound);
         }
 
         /// <summary>
         /// Configure the converters that set the speed angle of the bandwidth bars
         /// TODO Find out how to inject contracts so we can switch out the standard converter for a metric one
         /// </summary>
-        /// <param name="straightaway"></param>
-        private void CreateConverters(Segment straightaway)
+        /// <param name="segment"></param>
+        private void CreateConverters(Segment segment)
         {
-            CycleConverter cycleConverter = this.CycleGrid.Resources["cycleConverter"] as CycleConverter;
-            cycleConverter.Cycles = straightaway.Cycles;
+            CycleConverter cycleConverter = CycleGrid.Resources["cycleConverter"] as CycleConverter;
+            cycleConverter.Cycles = segment.Cycles;
 
-            CycleBackgroundConverter cycleBackgroundConverter = this.CycleGrid.Resources["cycleBackgroundConverter"] as CycleBackgroundConverter;
-            cycleBackgroundConverter.Cycles = straightaway.Cycles;
+            CycleBackgroundConverter cycleBackgroundConverter = CycleGrid.Resources["cycleBackgroundConverter"] as CycleBackgroundConverter;
+            cycleBackgroundConverter.Cycles = segment.Cycles;
             
-            SpeedLimitAngleConverter angleConverter = this.CycleGrid.Resources["angleConverter"] as SpeedLimitAngleConverter;
-            angleConverter.Distance = straightaway.Distance;
-            angleConverter.CycleLength = straightaway.CycleLength;
-            angleConverter.SpeedLimit = straightaway.SpeedLimit;
+            SpeedLimitAngleConverter angleConverter = CycleGrid.Resources["angleConverter"] as SpeedLimitAngleConverter;
+            angleConverter.Distance = segment.Distance;
+            angleConverter.CycleLength = segment.CycleLength;
+            angleConverter.SpeedLimit = segment.SpeedLimit;
             
-            FlowConverter obConverter = this.CycleGrid.Resources["widthConverter"] as FlowConverter;
-            obConverter.LeftBarWidth = this.InboundPhaseBar.Width;
-            obConverter.RightBarWidth = this.OutboundPhaseBar.Width;
+            FlowConverter obConverter = CycleGrid.Resources["widthConverter"] as FlowConverter;
+            obConverter.LeftBarWidth = InboundPhaseBar.Width;
+            obConverter.RightBarWidth = OutboundPhaseBar.Width;
         }
 
         private void AddGradientStops(TrafficSignal intersection, Rectangle bar, Rectangle flow, TrafficDirection trafficDirection)
@@ -102,7 +102,7 @@ namespace TimeSpaceDiagramControl.Controls
             }
 
             // Get the Gradient Offsets for this intersection
-            var colorOffsets = offsetService.GetColorOffsets(intersection, trafficDirection);
+            var colorOffsets = _offsetService.GetColorOffsets(intersection, trafficDirection);
             
             phaseGradientBrush.GradientStops.Clear();
             flowGradientBrush.GradientStops.Clear();
