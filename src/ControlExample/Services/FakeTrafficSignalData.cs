@@ -15,6 +15,11 @@ namespace ControlExample.Services
     /// </summary>
     public class FakeTrafficSignalData : ITrafficSignalService
     {
+        /// <summary>
+        /// Gets traffic signal information for an arterial
+        /// </summary>
+        /// <param name="arterialName"></param>
+        /// <returns>IList of <see cref="TrafficSignal"/> objects</returns>
         public IList<TrafficSignal> GetTrafficSignals(string arterialName)
         {
             int offset = 0;
