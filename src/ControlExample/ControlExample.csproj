@@ -62,13 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IoC\TrafficRegistry.cs" />
-    <Compile Include="Services\CalculatedOffsetService.cs" />
-    <Compile Include="Services\ColorOffsetComparer.cs" />
-    <Compile Include="Services\CycleCalculationUtility.cs" />
-    <Compile Include="Services\GradientColorManager.cs" />
     <Compile Include="Services\Intersections\FakeIntersectionService.cs" />
-    <Compile Include="Services\ScaledColorOffsetFactory.cs" />
-    <Compile Include="Services\SignalPlanService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

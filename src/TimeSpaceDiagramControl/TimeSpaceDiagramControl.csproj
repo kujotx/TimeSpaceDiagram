@@ -79,6 +79,12 @@
     <Compile Include="Interfaces\ISignalPlanService.cs" />
     <Compile Include="Interfaces\ITimeSpaceGrid.cs" />
     <Compile Include="Interfaces\ITrafficSignalService.cs" />
+    <Compile Include="Services\CalculatedOffsetService.cs" />
+    <Compile Include="Services\ColorOffsetComparer.cs" />
+    <Compile Include="Services\CycleCalculationUtility.cs" />
+    <Compile Include="Services\GradientColorManager.cs" />
+    <Compile Include="Services\ScaledColorOffsetFactory.cs" />
+    <Compile Include="Services\SignalPlanService.cs" />
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
       <SubType>Code</SubType>
