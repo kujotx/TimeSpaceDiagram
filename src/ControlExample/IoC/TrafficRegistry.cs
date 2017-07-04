@@ -3,11 +3,10 @@
     using Ninject.Modules;
 
     using ControlExample.Services.Intersections;
-    using ControlExample.Services;
 
     using TimeSpaceDiagramControl.Controls;
     using TimeSpaceDiagramControl.Interfaces;
-    
+    using TimeSpaceDiagramControl.Services;
 
     /// <summary>
     /// Sets up our contracts and services
@@ -27,10 +26,6 @@
             Bind<ITimeSpaceGrid>().To<TimeSpaceGrid>()
                 .InTransientScope()
                 .WithPropertyValue("ArterialName", "FM 1093");
-            Bind<MainWindow>().ToSelf()
-                .InTransientScope();
-            Bind<Cycle>().ToSelf()
-                .InTransientScope();
         }
     }
 }
