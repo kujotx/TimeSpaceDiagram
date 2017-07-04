@@ -20,6 +20,10 @@ namespace ControlExample
     {
         private IKernel container;
 
+        /// <summary>
+        /// Startup tasks
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -28,11 +32,17 @@ namespace ControlExample
             Current.MainWindow.Show();
         }
 
+        /// <summary>
+        /// Bootstraps the IoC container
+        /// </summary>
         private void ConfigureContainer()
         {
             this.container = new StandardKernel(new TrafficRegistry());
         }
 
+        /// <summary>
+        /// Set up the main window
+        /// </summary>
         private void ComposeObjects()
         {
             Current.MainWindow = this.container.Get<MainWindow>();
