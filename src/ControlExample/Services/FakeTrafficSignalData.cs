@@ -5,11 +5,15 @@ using TimeSpaceDiagramControl.Domain;
 namespace ControlExample.Services
 {
     /// <summary>
-    /// IntersectionService returns all cross-streets for a given arterialName
+    /// FakeTrafficSignalData has one method that returns a 
+    /// list of <see cref="TrafficSignal"/> objects for 
+    /// all cross-streets for a given arterial.
+    /// 
     /// TODO You should be able to extend this with methods that list all
     /// cross streets between (and including) two cross streets.
+    /// ex: GetTrafficSignals(arterial,startStreet,endStreet)
     /// </summary>
-    public class FakeIntersectionService : ITrafficSignalService
+    public class FakeTrafficSignalData : ITrafficSignalService
     {
         public IList<TrafficSignal> GetTrafficSignals(string arterialName)
         {

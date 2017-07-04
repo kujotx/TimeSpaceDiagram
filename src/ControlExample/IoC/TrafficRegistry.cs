@@ -9,7 +9,7 @@
     using TimeSpaceDiagramControl.Services;
 
     /// <summary>
-    /// Sets up our contracts and services
+    /// Sets up our contracts and services in Ninject
     /// </summary>
     public class TrafficRegistry : NinjectModule
     {
@@ -18,7 +18,8 @@
         /// </summary>
         public override void Load()
         {
-            Bind<ITrafficSignalService>().To<FakeIntersectionService>()
+            // this app has its own service for delivering intersection data
+            Bind<ITrafficSignalService>().To<FakeTrafficSignalData>()
                 .InTransientScope();
             RegisterTimeSpaceDiagramControl();
         }
