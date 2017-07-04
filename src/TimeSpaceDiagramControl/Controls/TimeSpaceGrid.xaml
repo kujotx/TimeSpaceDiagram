@@ -1,0 +1,10 @@
+﻿<Controls:TsUserControl x:Class="TimeSpaceDiagramControl.Controls.TimeSpaceGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:TimeSpaceDiagramControl.Controls" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="CycleGrid" Background="#FF403D3D">
+    </Grid>
+</Controls:TsUserControl>
