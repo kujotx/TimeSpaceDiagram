@@ -15,11 +15,21 @@ namespace TimeSpaceDiagram.IoC
     {
         public override void Load()
         {
-            Bind<ITrafficSignalService>().To<FakeIntersectionService>().InTransientScope();
-            Bind<ISignalPlanService>().To<SignalPlanService>().InTransientScope();
-            Bind<IGradientColorManager>().To<HardCodedColorManager>().InTransientScope();
-            Bind<IOffsetService>().To<CalculatedOffsetService>().InTransientScope();
-            Bind<Cycle>().ToSelf().InTransientScope();
+            Bind<ITrafficSignalService>().To<FakeIntersectionService>()
+                .InTransientScope();
+            Bind<ISignalPlanService>().To<SignalPlanService>()
+                .InTransientScope();
+            Bind<IGradientColorManager>().To<HardCodedColorManager>()
+                .InTransientScope();
+            Bind<IOffsetService>().To<CalculatedOffsetService>()
+                .InTransientScope();
+            Bind<ITimeSpaceGrid>().To<TimeSpaceGrid>()
+                .InTransientScope()
+                .WithPropertyValue("ArterialName", "FM 1093");
+            Bind<MainWindow>().ToSelf()
+                .InTransientScope();
+            Bind<Cycle>().ToSelf()
+                .InTransientScope();
         }
     }
 }

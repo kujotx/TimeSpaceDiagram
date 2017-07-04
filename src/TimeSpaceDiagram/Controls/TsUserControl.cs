@@ -4,19 +4,8 @@
 
     using System.Windows.Controls;
 
-    using Ninject;
-
-    using TimeSpaceDiagram.IoC;
-
     public abstract class TsUserControl : UserControl, IDisposable
     {
-        protected readonly IKernel Kernel;
-
-        protected TsUserControl()
-        {
-            Kernel = new StandardKernel(new TrafficRegistry());
-        }
-        
         public void Dispose()
         {
             Dispose(true);
@@ -28,7 +17,6 @@
             if (disposing)
             {
                 // free managed resources
-                Kernel.Dispose();
             }
             // free native resources if there are any.
         }

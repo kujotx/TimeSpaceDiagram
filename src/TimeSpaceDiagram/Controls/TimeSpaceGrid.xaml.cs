@@ -5,15 +5,13 @@
     using System.Windows;
     using System.Windows.Controls;
 
-    using Ninject;
-
     using TimeSpaceDiagram.Domain;
     using TimeSpaceDiagram.Interfaces;
 
     /// <summary>
     /// Interaction logic for TimeSpaceGrid.xaml
     /// </summary>
-    public partial class TimeSpaceGrid : TsUserControl
+    public partial class TimeSpaceGrid : TsUserControl, ITimeSpaceGrid
     {
         private const int Cycles = 3;
 
@@ -23,13 +21,16 @@
 
         private readonly IOffsetService _offsetService;
 
-        public TimeSpaceGrid()
+        public TimeSpaceGrid(
+            ISignalPlanService signalPlanService, 
+            IOffsetService offsetService, 
+            IGradientColorManager gradientColorManager)
         {
             InitializeComponent();
-            _signalPlanService = Kernel.Get<ISignalPlanService>();
+            _signalPlanService = signalPlanService;
             _signalPlan = _signalPlanService.CreateSignalPlan(Cycles, ArterialName);
-            _offsetService = Kernel.Get<IOffsetService>();
-            _gradientColorManager = Kernel.Get<IGradientColorManager>();
+            _offsetService = offsetService;
+            _gradientColorManager = gradientColorManager;
             CreateSignalPlan();
         }
 
