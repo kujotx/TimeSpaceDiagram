@@ -20,7 +20,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <StackPanel x:Name="stack" Orientation="Horizontal">
-            <Rectangle x:Name="InboundPhaseBar" Width="10">
+            <Rectangle x:Name="UpstreamPhaseBar" Width="10">
                 <Rectangle.Fill>
                     <LinearGradientBrush x:Name="LeftBarFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
                         <LinearGradientBrush.RelativeTransform>
@@ -31,7 +31,7 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Grid x:Name="TrafficFlow" Width="{Binding ElementName=stack, Path=ActualWidth, Converter={StaticResource widthConverter}}">
-                <Rectangle x:Name="InboundFlow">
+                <Rectangle x:Name="UpstreamFlow">
                     <Rectangle.Fill>
                         <LinearGradientBrush x:Name="LeftFlowFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
                             <LinearGradientBrush.Transform>
@@ -51,7 +51,7 @@
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Rectangle x:Name="OutboundFlow">
+                <Rectangle x:Name="DownstreamFlow">
                     <Rectangle.Fill>
                         <LinearGradientBrush x:Name="RightFlowFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
                          <LinearGradientBrush.Transform>
@@ -76,7 +76,7 @@
                     </Rectangle.LayoutTransform>
                 </Rectangle>
             </Grid>
-            <Rectangle x:Name="OutboundPhaseBar" Width="10">
+            <Rectangle x:Name="DownstreamPhaseBar" Width="10">
                 <Rectangle.Fill>
                     <LinearGradientBrush x:Name="RightBarFill" StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
                         <LinearGradientBrush.RelativeTransform>

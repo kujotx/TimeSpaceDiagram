@@ -17,7 +17,7 @@
         {
             DownstreamIntersection = downstreamIntersection;
             UpstreamIntersection = upstreamIntersection;
-            Distance = downstreamIntersection.OutboundDistance;
+            Distance = downstreamIntersection.DownstreamDistance;
             SpeedLimit = speedLimit;
             CycleCount = cycleCount;
             CycleLength = cycleLength;

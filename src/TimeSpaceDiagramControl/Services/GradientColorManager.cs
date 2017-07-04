@@ -8,7 +8,7 @@ namespace TimeSpaceDiagramControl.Services
     /// </summary>
     public class HardCodedColorManager : IGradientColorManager
     {
-        public Color GetInboundFlowColor()
+        public Color GetUpstreamFlowColor()
         {
             return Colors.AliceBlue;
         }
@@ -26,7 +26,7 @@ namespace TimeSpaceDiagramControl.Services
         /// This is the color used for the flow bandwidths bands.
         /// </summary>
         /// <returns></returns>
-        public Color GetOutboundFlowColor()
+        public Color GetDownstreamFlowColor()
         {
             return Colors.LightSalmon;
         }

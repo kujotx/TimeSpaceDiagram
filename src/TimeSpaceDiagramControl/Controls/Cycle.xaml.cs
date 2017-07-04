@@ -32,8 +32,8 @@ namespace TimeSpaceDiagramControl.Controls
         private readonly IOffsetService _offsetService;
         private readonly IGradientColorManager _gradientColorManager;
         private readonly Color _green;
-        private readonly Color _outboundFlowColor;
-        private readonly Color _inboundFlowColor;
+        private readonly Color _downstreamFlowColor;
+        private readonly Color _upstreamFlowColor;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Cycle"/> class.
@@ -43,8 +43,8 @@ namespace TimeSpaceDiagramControl.Controls
             InitializeComponent();
             _gradientColorManager = gradientColorManager;
             _green = _gradientColorManager.GetGreenColor();
-            _outboundFlowColor = _gradientColorManager.GetOutboundFlowColor();
-            _inboundFlowColor = _gradientColorManager.GetInboundFlowColor();
+            _downstreamFlowColor = _gradientColorManager.GetDownstreamFlowColor();
+            _upstreamFlowColor = _gradientColorManager.GetUpstreamFlowColor();
             Segments = segment;
             _offsetService = offsetService;
             CreateConverters(segment);
@@ -62,8 +62,8 @@ namespace TimeSpaceDiagramControl.Controls
         /// </summary>
         private void CreateGradientStops()
         {
-            AddGradientStops(Segments.UpstreamIntersection, OutboundPhaseBar, OutboundFlow, TrafficDirection.Downstream);
-            AddGradientStops(Segments.DownstreamIntersection, InboundPhaseBar, InboundFlow, TrafficDirection.Upstream);
+            AddGradientStops(Segments.UpstreamIntersection, DownstreamPhaseBar, DownstreamFlow, TrafficDirection.Downstream);
+            AddGradientStops(Segments.DownstreamIntersection, UpstreamPhaseBar, UpstreamFlow, TrafficDirection.Upstream);
         }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace TimeSpaceDiagramControl.Controls
             angleConverter.SpeedLimit = segment.SpeedLimit;
             
             FlowConverter obConverter = CycleGrid.Resources["widthConverter"] as FlowConverter;
-            obConverter.LeftBarWidth = InboundPhaseBar.Width;
-            obConverter.RightBarWidth = OutboundPhaseBar.Width;
+            obConverter.LeftBarWidth = UpstreamPhaseBar.Width;
+            obConverter.RightBarWidth = DownstreamPhaseBar.Width;
         }
 
         private void AddGradientStops(TrafficSignal intersection, Rectangle bar, Rectangle flow, TrafficDirection trafficDirection)
@@ -107,7 +107,7 @@ namespace TimeSpaceDiagramControl.Controls
             phaseGradientBrush.GradientStops.Clear();
             flowGradientBrush.GradientStops.Clear();
 
-            var fillColor = trafficDirection == TrafficDirection.Downstream ? _outboundFlowColor : _inboundFlowColor;
+            var fillColor = trafficDirection == TrafficDirection.Downstream ? _downstreamFlowColor : _upstreamFlowColor;
             
             // Add the colors for the phase and a matching background for flows to match the coordinated phase.
             foreach (var colorOffset in colorOffsets)

@@ -4,8 +4,8 @@
 
     public interface IGradientColorManager
     {
-        Color GetOutboundFlowColor();
-        Color GetInboundFlowColor();
+        Color GetDownstreamFlowColor();
+        Color GetUpstreamFlowColor();
         Color GetGreenColor();
         Color GetYellowColor();
         Color GetRedColor();
